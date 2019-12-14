@@ -163,6 +163,45 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">
                         Close
                     </button>
+                    <script type="text/javascript">
+                        $("#submit").on("click", function () {
+                            function formVal() {
+                                var areVal = true;
+                                $(".form-control").each(function () {
+                                    if ($(this).val() === "") areVal = false;
+                                });
+
+                                $(".chosen-select").each(function () {
+                                    if ($(this).val() === "") areVal = false;
+                                });
+
+                                return areVal;
+
+                            }
+
+                            if (formVal() == true) {
+                                var dataUser = {
+                                    name: $("#name").val(),
+                                    photo: $("#photo").val(),
+                                    score: [
+                                        $("#q1").val(),
+                                        $("#q2").val(),
+                                        $("#q3").val(),
+                                        $("#q4").val(),
+                                        $("#q5").val(),
+                                        $("#q6").val(),
+                                        $("#q7").val(),
+                                        $("#q8").val(),
+                                        $("#q9").val(),
+                                        $("#q10").val()
+                                    ]
+                                }
+                            }
+
+                        });
+
+                    </script>
+
 </body>
 
 </html>

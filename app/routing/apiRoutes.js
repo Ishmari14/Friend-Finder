@@ -39,7 +39,27 @@ module.exports = function (app) {
             console.log(friends[i].name);
             differtotal = 0;
             console.log("Total Difference" + differtotal);
-            console.log("Best Match difference" + bestMatch.frienddiffer);
-        }
+            console.log("Best Match Difference" + bestMatch.frienddiffer);
+
+            var bfscore = friends[i].scores.reduce((a, b) => a + b, 0);
+            console.log("BF score" + bfscore);
+            ///subtracting difference to make final total score///
+            differtotal += Math.abs(sum - bfscore);
+            console.log("==============================>" + differtotal);
+
+            if (differtotal <= bestMatch.frienddiffer) {
+                bestMatch.name = friends[i].name;
+                bestMatch.photo = friends[i].photo;
+                bestMatch.frienddiffer = differtotal;
+            }
+            console.log(differtotal + "Complete Total Difference");
+
+        };
+
+        console.log(bestMatch);
+        console.log(dataUser);
+        friends.push(dataUser);
+        console.log("Adding New User");
+        res.json(bestMatch);
     });
 };
