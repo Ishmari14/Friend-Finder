@@ -1,4 +1,5 @@
 var friends = require("../data/friends.js");
+var connection;
 
 if (process.env.JAWDB_URL) {
     connection = mysql.createConnection(process.env.JAWDB_URL);
@@ -10,6 +11,9 @@ if (process.env.JAWDB_URL) {
         database: 'todoagain_db'
     });
 };
+
+connection.connect();
+module.exports = connection;
 
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
