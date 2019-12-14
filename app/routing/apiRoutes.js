@@ -1,5 +1,16 @@
 var friends = require("../data/friends.js");
 
+if (process.env.JAWDB_URL) {
+    connection = mysql.createConnection(process.env.JAWDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'hacktheplanet',
+        database: 'todoagain_db'
+    });
+};
+
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
         res.json(friends);
